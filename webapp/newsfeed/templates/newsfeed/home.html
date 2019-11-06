@@ -1,11 +1,17 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 {% block content %}
     {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.content }}</p>
-        <p>Source: {{ post.source }}</p>
-        <a href="{{ post.link_url }}">{{ post.link_title }}</a>
-        <p>{{ post.tags }}</p>
-        <p>{{ post.date }}</p>
+        <article class="media content-section">
+            <div class="media-body">
+                <h2 class="article-title">{{ post.title }}</h2>
+                <p class="article-content">{{ post.content }}</p>
+                <a href="{{ post.link_url }}">{{ post.link_title }}</a>
+                <div class="article-metadata">
+                    <small class="text-muted">Source: {{ post.source }}</small>
+                    <p>{{ post.tags }}</p>
+                    <p>{{ post.date }}</p>
+                </div>
+            </div>
+        </article>
     {% endfor %}
 {% endblock content%}
