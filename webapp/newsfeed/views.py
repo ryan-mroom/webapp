@@ -40,6 +40,7 @@ posts = [
     }
 ]
 
+
 def home(request):
     context = {
         'title': 'Newsfeed',
