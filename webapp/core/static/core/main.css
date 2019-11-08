@@ -29,24 +29,25 @@ ul {
 }
 
 .content-section {
+  background-image: linear-gradient(#b6f1e9, white, white);
+  border-radius: 18px;
+}
+
+.content-card {
   background: #ffffff;
-  padding: 10px 20px;
-  border: 1px solid #dddddd;
-  border-radius: 3px;
-  margin-bottom: 20px;
+  border-radius: 18px;
 }
 
 .article-title {
-  color: #444444;
-}
-
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+  color: #435552;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .article-content {
   white-space: pre-line;
+  color: #a1aaa8;
+  font-size: 16px;
 }
 
 .article-img {
@@ -55,15 +56,39 @@ a.article-title:hover {
   margin-right: 16px;
 }
 
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+.article-tag {
+    height: 24px;
+    border-radius: 12px;
+    display: inline-block;
+    font-size: 16px;
+    color: #707070;
+    background-color: #def5f9;
 }
 
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+.article-date {
+    font-size: 15px;
+    color: #a1aaa8;
+}
+
+.article-link-box {
+    background-color: #e0e9e8;
+    border-radius: 20px;
+    height: 40px;
+    width: 97%;
+}
+
+.article-link {
+    color: #435552;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.article-link-icon{
+    display: inline-block;
+    //size: 20px, 20px;
+    //background-color: #ffffff;
+    //border: 1px solid #435552;;
+    vertical-align: middle;
 }
 
 .article-svg {
@@ -81,4 +106,10 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 600px;
+    }
 }
