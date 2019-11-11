@@ -7,7 +7,7 @@
                 <div class="content-card">
                     <p class="mx-2 article-content">{{ post.content }}</p>
                     <div class="mx-2 atricle-link-box">
-                        <div class="article-link-icon"></div>
+                         <img src="static/core/link-icon.png" alt="link" height="20" width="20">
                         <a class="article-link" href="{{ post.link_url }}">{{ post.link_title }}</a>
                     </div>
                     <small class="ml-2 text-muted">Source: {{ post.source }}</small>
@@ -18,9 +18,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="article-date">
-                        <p class="ml-2">{{ post.date_posted }}</p>
-                    </div>
+                    <p class="ml-2 article-date">{{ post.date_posted }}</p>
                 </div>
             </div>
         </article>
