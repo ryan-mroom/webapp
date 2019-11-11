@@ -12,8 +12,14 @@ ul {
   margin: 0;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+.navbar-bg {
+  background-color: #ffffff;
+}
+
+.navbar-title {
+    color: #435552;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -75,19 +81,12 @@ ul {
     border-radius: 20px;
     height: 40px;
     width: 97%;
+    font-size: 16px;
 }
 
 .article-link {
     color: #435552;
     font-size: 16px;
-    vertical-align: middle;
-}
-
-.article-link-icon{
-    display: inline-block;
-    //size: 20px, 20px;
-    //background-color: #ffffff;
-    //border: 1px solid #435552;;
     vertical-align: middle;
 }
 
