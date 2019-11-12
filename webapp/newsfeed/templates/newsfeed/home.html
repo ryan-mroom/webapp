@@ -37,7 +37,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <p class="ml-2 article-date">{{ post.date_posted }}</p>
+                    <p class="ml-2 article-date">{{ post.date_posted|date:"F d, Y" }}</p>
                 </div>
             </div>
         </article>
