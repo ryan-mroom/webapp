@@ -5,7 +5,6 @@ from django.forms.models import model_to_dict
 
 def home(request):
     posts = [model_to_dict(Post.objects.all()[0])]
-
     for post in posts:
         post.update({'tags_array': get_tags(post)})
 

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'core.apps.CoreConfig',
     'newsfeed.apps.NewsfeedConfig',
-
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
