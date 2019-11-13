@@ -1,0 +1,8 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Dashboard</h1>
+    <a href="{% url 'users-profile' %}">Profile</a>
+    <br>
+    <a href="{% url 'newsfeed-home' %}">Newsfeed</a>
+{% endblock content%}

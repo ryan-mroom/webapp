@@ -1,22 +1,5 @@
 {% extends "core/base.html" %}
 {% block content %}
-    <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-light navbar-bg fixed-top">
-            <div class="container">
-                <img src="static/core/mushroom-logo.png" alt="link" height="50">
-                <a class="navbar-title" href="#">Mushroom</a>
-                <form class="navbar-form">
-                    <div class="form-group" style="display:inline;">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-addon"><span class="fas fa-search"></span></span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </nav>
-    </header>
-
     {% for post in posts %}
         <article class="media mb-4 content-section">
             <div class="media-body">
