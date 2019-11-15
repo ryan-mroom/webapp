@@ -50,6 +50,11 @@ ul {
   font-weight: 600;
 }
 
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
 .article-content {
   white-space: pre-line;
   color: #a1aaa8;
