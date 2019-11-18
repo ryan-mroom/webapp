@@ -132,3 +132,13 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'users-dashboard'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# THE NEXT TO VARIABLE SHOULD BE HIDDEN IN AN ENVIRONMENT VARIABLE. IT IS SENSITIVE INFORMATION.
+#EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = 'rai5395'
+EMAIL_HOST_PASSWORD = 'jkhameccyvukchwv'
