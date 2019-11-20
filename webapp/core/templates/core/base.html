@@ -54,8 +54,11 @@
                         <a href="{% url 'users-profile' %}" class="nav-item nav-link" title="Profile"><i class="far fa-user-circle nav-item nav-link"></i></a>
                         <a href="{% url 'logout' %}" class="nav-item nav-link" title="Logout"><i class="fas fa-sign-out-alt nav-item nav-link"></i></a>
                     {% else %}
-                        <a href="{% url 'login' %}" class="nav-item nav-link" title="Login"><i class="fas fa-sign-in-alt"></i></a>
+                    <!--
+                        Uncomment to enable users loging in from the home page
+                        <a href="{% url 'login' %}" class="nav-item nav-link" title="Login"><i class="fas fa-sign-in-alt nav-item nav-link"></i></a>
                         <a href="{% url 'users-register' %}" class="nav-item nav-link">Register</a>
+                     -->
                     {% endif %}
                 </div>
             </div>
