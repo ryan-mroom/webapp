@@ -114,6 +114,6 @@ a.article-title:hover {
 
 @media (min-width: 1200px) {
     .container{
-        max-width: 600px;
+        max-width: 1000px;
     }
 }
