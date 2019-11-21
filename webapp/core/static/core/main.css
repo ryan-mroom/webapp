@@ -117,6 +117,12 @@ a.article-title:hover, .article-link:hover {
   vertical-align: middle;
 }
 
+.paginated-controls {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
 .account-img {
   height: 125px;
   width: 125px;

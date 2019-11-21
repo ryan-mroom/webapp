@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
 from math import ceil
+import os
 
 
 class Post(models.Model):
@@ -25,8 +26,14 @@ class Post(models.Model):
         return reverse('newsfeed-post-detail', kwargs={'pk':self.pk})
 
 
-    # NOTE: Need to delete old image before adding a new one.
     def save(self):
+        try:
+            current_img = Post.objects.filter(pk=self.pk).first().image.path
+            if current_img != self.image.path:
+                os.remove(current_img)
+        except:
+            pass
+
         super().save()
 
         img = Image.open(self.image.path)
