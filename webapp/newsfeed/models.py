@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
+from math import ceil
 
 
 class Post(models.Model):
@@ -30,8 +31,16 @@ class Post(models.Model):
 
         img = Image.open(self.image.path)
 
-        if img.height > 196 or img.width > 568:
-            output_size = (568, 196)
-            img.thumbnail(output_size)
+        # the following code uses magic numbers: bad
+        scale_x = 568/img.width
+        scale_y = 196/img.height
+        if scale_x > scale_y:
+            img_size = (ceil(img.width * scale_x), ceil(img.height * scale_x))
+            img.thumbnail(img_size)
+        elif scale_y > scale_x:
+            img_size = (ceil(img.width * scale_y), ceil(img.height * scale_y))
+            img.thumbnail(img_size)
+
+        img = img.crop((0, 0, 568, 196))
 
         img.save(self.image.path)
