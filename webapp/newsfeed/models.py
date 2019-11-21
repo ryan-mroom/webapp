@@ -39,15 +39,9 @@ class Post(models.Model):
         img = Image.open(self.image.path)
 
         # the following code uses magic numbers: bad
-        scale_x = 568/img.width
-        scale_y = 196/img.height
-        if scale_x > scale_y:
-            img_size = (ceil(img.width * scale_x), ceil(img.height * scale_x))
-            img.thumbnail(img_size)
-        elif scale_y > scale_x:
-            img_size = (ceil(img.width * scale_y), ceil(img.height * scale_y))
-            img.thumbnail(img_size)
-
+        scale = max(568/img.width, 196/img.height)
+        img_size = (ceil(img.width * scale), ceil(img.height * scale))
+        img.thumbnail(img_size)
         img = img.crop((0, 0, 568, 196))
 
         img.save(self.image.path)
