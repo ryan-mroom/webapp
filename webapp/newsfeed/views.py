@@ -32,19 +32,21 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content', 'source', 'link_url', 'link_title', 'tags']
+    fields = ['title', 'content', 'source', 'link_url', 'link_title', 'tags', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+
         return super().form_valid(form)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content', 'source', 'link_url', 'link_title', 'tags']
+    fields = ['title', 'content', 'source', 'link_url', 'link_title', 'tags', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+
         return super().form_valid(form)
 
     def test_func(self):
