@@ -28,18 +28,24 @@ class Post(models.Model):
 
     def save(self):
         try:
+            print('here')
             current_img = Post.objects.filter(pk=self.pk).first().image.path
-            if current_img != self.image.path:
+            if os.path.isfile(current_img):
+                print('here2')
                 os.remove(current_img)
         except:
             pass
 
+        print('here3')
         super().save()
 
+        print('====================================')
+        print(self.image.name)
+        print('====================================')
         img = Image.open(self.image.path)
 
         # the following code uses magic numbers: bad
-        scale = max(568/img.width, 196/img.height)
+        scale = max(568 / img.width, 196 / img.height)
         img_size = (ceil(img.width * scale), ceil(img.height * scale))
         img.thumbnail(img_size)
         img = img.crop((0, 0, 568, 196))
