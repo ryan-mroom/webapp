@@ -16,14 +16,13 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(default='newsfeed-default.png', upload_to='newsfeed_pics/')
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
 
-
     def get_absolute_url(self):
-        return reverse('newsfeed-post-detail', kwargs={'pk':self.pk})
-
+        return reverse('newsfeed-post-detail', kwargs={'pk': self.pk})
 
     # the following code uses magic numbers and harcoded literal strings: bad
     def save(self):
