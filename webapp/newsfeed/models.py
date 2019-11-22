@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 from django.urls import reverse
-from math import ceil
 import os
 
 
@@ -26,28 +25,29 @@ class Post(models.Model):
         return reverse('newsfeed-post-detail', kwargs={'pk':self.pk})
 
 
+    # the following code uses magic numbers and harcoded literal strings: bad
     def save(self):
-        try:
-            print('here')
-            current_img = Post.objects.filter(pk=self.pk).first().image.path
-            if os.path.isfile(current_img):
-                print('here2')
-                os.remove(current_img)
-        except:
-            pass
+        old_img = Post.objects.filter(pk=self.pk).first()
+        print(type(old_img))
+        if old_img is None:
+            old_img = ''
+        else:
+            old_img = old_img.image.path
 
-        print('here3')
         super().save()
 
-        print('====================================')
-        print(self.image.name)
-        print('====================================')
-        img = Image.open(self.image.path)
+        new_img = self.image.path
+        img = Image.open(new_img)
 
-        # the following code uses magic numbers: bad
-        scale = max(568 / img.width, 196 / img.height)
-        img_size = (ceil(img.width * scale), ceil(img.height * scale))
-        img.thumbnail(img_size)
-        img = img.crop((0, 0, 568, 196))
+        if old_img != new_img:
+            # image operation should catch the IOError if file cannot be written
+            scale = max(568 / img.width, 196 / img.height)
+            img = img.resize((round(img.width * scale), round(img.height * scale)))
+            img = img.crop((0, 0, 568, 196))
+            img.save(new_img)
 
-        img.save(self.image.path)
+        try:
+            if old_img != new_img and os.path.isfile(old_img) and old_img != 'C:\\mushroom\\webapp\\media\\newsfeed-default.jpg':
+                os.remove(old_img)
+        except:
+            pass

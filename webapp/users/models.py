@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-from math import ceil
 import os
 
 
@@ -13,16 +12,17 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 
-    # NOTE: Need to delete old image before adding a new one.
+    # the following code uses magic numbers and harcoded literal strings: bad
     def save(self):
-        old_img = Profile.objects.filter(pk=self.pk).first().image.path
+        old_img = Profile.objects.filter(pk=self.pk).first()
+        if old_img is None:
+            old_img = ''
+        else:
+            old_img = old_img.image.path
+
         super().save()
 
         new_img = self.image.path
-
-        print('====================================')
-        print(f'OLD IMG: {old_img}')
-        print(f'NEW IMG: {new_img}')
         img = Image.open(new_img)
 
         if old_img != new_img:
@@ -33,7 +33,7 @@ class Profile(models.Model):
             img.save(new_img)
 
         try:
-            if old_img != new_img and os.path.isfile(old_img):
+            if old_img != new_img and os.path.isfile(old_img) and old_img != 'C:\\mushroom\\webapp\\media\\profile-default.jpg':
                 os.remove(old_img)
         except:
             pass
