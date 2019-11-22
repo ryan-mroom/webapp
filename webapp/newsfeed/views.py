@@ -17,6 +17,11 @@ class PostListView(ListView):
         data = super().get_context_data(**kwargs)
         for post in data['object_list']:
             post.tags = get_tags(post.tags)
+
+            word_list = post.content.split()
+            if len(word_list) > 100:
+                post.content = ' '.join(word_list[:80]) + '...read more'
+
         return data
 
 
