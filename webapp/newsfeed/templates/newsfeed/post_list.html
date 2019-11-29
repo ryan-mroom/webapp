@@ -3,7 +3,11 @@
     {% for post in posts %}
         <article class="media mb-4 content-section">
             <div class="media-body">
-                <h2><a class="article-title px-2 py-1" href="{% url 'newsfeed-post-detail' post.id %}">{{ post.title }}</a></h2>
+                {% if user.username == 'MushroomOfficial' %}
+                    <h2><a class="article-title px-2 py-1" href="{% url 'newsfeed-post-approval' post.id %}">{{ post.title }}</a></h2>
+                {% else %}
+                    <h2><a class="article-title px-2 py-1" href="{% url 'newsfeed-post-detail' post.id %}">{{ post.title }}</a></h2>
+                {% endif %}
                 <div class="content-card pt-2">
                     <img class="newsfeed-image my-2" src="{{ post.image.url }}" alt="post-image">
                     <p class="mx-2 article-content">{{ post.content }}</p>
